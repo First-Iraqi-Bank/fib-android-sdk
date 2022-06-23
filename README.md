@@ -196,3 +196,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+## Redirection
+
+this SDK also includes an option to redirect the user from the FIB appllications to your application, you can provide the applications `redirect URI` and everyThing will be handled for you.
+
+it is optional to have this feature, so if you provide your `redirect URI`, the redirection happens otherwise the FIB applications behave as they normally would.
