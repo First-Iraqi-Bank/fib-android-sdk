@@ -177,18 +177,18 @@ lifecycleScope.launch {
 The library will check if any version of FIB app is installed on the mobile device of the user and will try to proceed
 transaction. If more than one app are installed the user is asked to choose one of them. If no FIB is installed the user
 will be redirected to the Google Play Store.
-```
-## Redirection
 
+## Redirection
 This SDK also includes an option to redirect the user from the FIB appllications to your application,
  you can provide the applications `redirect URI` and everyThing will be handled for you.
 it is optional to have this feature, so if you provide your `redirect URI`,
  the redirection happens otherwise the FIB applications behave as they normally would.
-
+ 
 ### Step 1:Add an Intent Filter to AndroidManifest.xml
 In your AndroidManifest.xml file, define an intent filter to capture the custom redirect URL scheme.
  This will allow your app to respond when the specified URL is triggered:
- 
+
+
  ```xml
  <intent-filter>
     <action android:name="android.intent.action.VIEW" />
@@ -202,16 +202,14 @@ In your AndroidManifest.xml file, define an intent filter to capture the custom 
         android:pathPrefix="/responsePayment"
         android:scheme="clientapp" />
 </intent-filter>
-
+```
 ### Step 2: Include the Redirect URI in Your Backend Request
 Once the intent filter is set up,
  simply include the custom redirect URI in your request to the First Iraqi Bank (FIB) backend.
  This will allow the FIB server to redirect users back to your app.
- 
+
 License
 -------
-
-```
 Copyright 2021 first iraqi bank, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
