@@ -204,11 +204,11 @@ In your AndroidManifest.xml file, define an intent filter to capture the custom 
         android:scheme="clientapp" />
 </intent-filter>
 
-### Step 2: Handle Redirect URL from Backend
-Once the intent filter is configured,
- handle the redirect by sending the custom redirect URL from your backend to the First Iraqi Bank (FIB) backend.
-  This allows you to complete the transaction workflow securely.
-  
+### Step 2: Include the Redirect URI in Your Backend Request
+Once the intent filter is set up,
+ simply include the custom redirect URI in your request to the First Iraqi Bank (FIB) backend.
+ This will allow the FIB server to redirect users back to your app.
+ 
 License
 -------
 
