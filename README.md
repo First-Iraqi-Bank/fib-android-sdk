@@ -18,11 +18,11 @@ To use this SDK on Android, the following must be addressed.
 
 ### Gradle:
 
-Add this dependency in your app’s `build.gradle` file
+Add this dependency in your app's `build.gradle` file
 
 ```groovy
 dependencies {
-    implementation 'iq.fib.payments:fib_payment_sdk:1.0.0'
+    implementation 'iq.fib.payments:fib_payment_sdk:1.1.0'
 }
 ```
 
@@ -47,7 +47,7 @@ ClientSecret = XXXX
 
 ### Step 3: Provide your environment to the SDK:
 
-In your app’s `build.gradle` file add `it.manifestPlaceholders["env_type"] = ".dev"` to your `defaultConfig` block
+In your app's `build.gradle` file add `it.manifestPlaceholders["env_type"] = ".dev"` to your `defaultConfig` block
 
 ```groovy
 android {
@@ -177,7 +177,37 @@ lifecycleScope.launch {
 The library will check if any version of FIB app is installed on the mobile device of the user and will try to proceed
 transaction. If more than one app are installed the user is asked to choose one of them. If no FIB is installed the user
 will be redirected to the Google Play Store.
+```
+## Redirection
 
+This SDK also includes an option to redirect the user from the FIB appllications to your application,
+ you can provide the applications `redirect URI` and everyThing will be handled for you.
+it is optional to have this feature, so if you provide your `redirect URI`,
+ the redirection happens otherwise the FIB applications behave as they normally would.
+
+### Step 1:Add an Intent Filter to AndroidManifest.xml
+In your AndroidManifest.xml file, define an intent filter to capture the custom redirect URL scheme.
+ This will allow your app to respond when the specified URL is triggered:
+ 
+ ```xml
+ <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+
+    <!-- Replace redirectLink with your desired URL structure -->
+    <!-- Example redirectLink: "clientapp://Your.url.example.co/responsePayment" -->
+    <data
+        android:host="Your.url.example.co"
+        android:pathPrefix="/responsePayment"
+        android:scheme="clientapp" />
+</intent-filter>
+
+### Step 2: Include the Redirect URI in Your Backend Request
+Once the intent filter is set up,
+ simply include the custom redirect URI in your request to the First Iraqi Bank (FIB) backend.
+ This will allow the FIB server to redirect users back to your app.
+ 
 License
 -------
 
@@ -195,9 +225,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-```
-## Redirection
-
-this SDK also includes an option to redirect the user from the FIB appllications to your application, you can provide the applications `redirect URI` and everyThing will be handled for you.
-
-it is optional to have this feature, so if you provide your `redirect URI`, the redirection happens otherwise the FIB applications behave as they normally would.
