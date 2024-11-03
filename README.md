@@ -177,7 +177,6 @@ lifecycleScope.launch {
 The library will check if any version of FIB app is installed on the mobile device of the user and will try to proceed
 transaction. If more than one app are installed the user is asked to choose one of them. If no FIB is installed the user
 will be redirected to the Google Play Store.
-
 ```
 ## Redirection
 
